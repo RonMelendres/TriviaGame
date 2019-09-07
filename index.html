@@ -1,79 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trivia Game</title>
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
 </head>
+
 <body>
     <h1>Random Trivia Game</h1>
 
-    <h2>Time Remaining: </h2>
+    <h2>Start</h2>
 
-    <div id="Questions">
-        
-        <h4>Which MLB team won the World Series in 2014?</h4>
-            <p>Kansas City Royals</p>
-            <p>New York Yankees</p>
-            <p>San Francisco Giants</p>
-            <p>Oakland Athletics</p>
+    <h2 id="timer-text">Time Remaining: </h2>
 
-        <h4>Who is the first President of the US?</h4>
-            <p>George Washington</p>
-            <p>John Adams</p>
-            <p>Thomas Jefferson</p>
-            <p>James Madison</p>
+    <div>
 
-        <h4>Which battle of the American Civil War was fought from July 1st - July 3rd of 1863?</h4>
-            <p>Antietam</p>
-            <p>Fredericksburg</p>
-            <p>First Battle of Bull Run</p>
-            <p>Gettysburg</p>
+        <h4 id="questions">Which MLB team won the World Series in 2014?</h4>
+        <p id="answers">Kansas City Royals</p>
+        <p id="answers">New York Yankees</p>
+        <p id="answers">San Francisco Giants</p>
+        <p id="answers">Oakland Athletics</p>
 
-        <h4>At the conclusion of the Spanish-American war, the U.S. PAID Spain $20 million for this colony...</h4>
-            <p>Guam</p>
-            <p>The Philippines</p>
-            <p>Puerto Rico</p>
-            <p>Cuba</p>
+        <h4 id="questions">Who is the first President of the US?</h4>
+        <p id="answers">George Washington</p>
+        <p id="answers">John Adams</p>
+        <p id="answers">Thomas Jefferson</p>
+        <p id="answers">James Madison</p>
 
-        <h4>Kenshin Himura from Rurouni Kenshin was also known as...</h4>
-            <p>Zero</p>
-            <p>Dokukanryu</p>
-            <p>Hitokiri Batousai</p>
-            <p>Omae Wa Mou Shindeiru</p>
+        <h4 id="questions">Which battle of the American Civil War was fought from July 1st - July 3rd of 1863?</h4>
+        <p id="answers">Antietam</p>
+        <p id="answers">Fredericksburg</p>
+        <p id="answers">First Battle of Bull Run</p>
+        <p id="answers">Gettysburg</p>
 
-        <h4>What is the signiture move of Captain Falcon?</h4>
-            <p>Falcon Punch</p>
-            <p>Falcon Kick</p>
-            <p>Falcon Drive</p>
-            <p>Falcon Knee</p>
+        <h4 id="questions">At the conclusion of the Spanish-American war, the U.S. PAID Spain $20 million for this
+            colony...</h4>
+        <p id="answers">Guam</p>
+        <p id="answers">The Philippines</p>
+        <p id="answers">Puerto Rico</p>
+        <p id="answers">Cuba</p>
 
-        <h4>Who is the leader of the Blue Loins house in Fire Emblem: Three Houses?</h4>
-            <p>Edelgard von Hresvelg</p>
-            <p>Dimitri Alexandre Blaiddyd</p>
-            <p>Claude von Riegan</p>
-            <p>Ferdinand von Aegir</p>
+        <h4 id="questions">Kenshin Himura from Rurouni Kenshin was also known as...</h4>
+        <p id="answers">Zero</p>
+        <p id="answers">Dokukanryu</p>
+        <p id="answers">Hitokiri Batousai</p>
+        <p id="answers">Omae Wa Mou Shindeiru</p>
 
-        <h4>Ike from Fire Emblem: Path of Radiance and Radiant Dawn is known for wielding which sword?</h4>
-            <p>Alondite</p>
-            <p>Ettard</p>
-            <p>Excalibur</p>
-            <p>Ragnell</p>
+        <h4 id="questions">What is the signiture move of Captain Falcon?</h4>
+        <p id="answers">Falcon Punch</p>
+        <p id="answers">Falcon Kick</p>
+        <p id="answers">Falcon Drive</p>
+        <p id="answers">Falcon Knee</p>
 
-        <h4>Roy, the protaganist of Fire Emblem: The Binding Blade, is from which country?</h4>
-            <p>Etruria</p>
-            <p>Bern</p>
-            <p>Lycia</p>
-            <p>Illia</p>
+        <h4 id="questions">Who is the leader of the Blue Loins house in Fire Emblem: Three Houses?</h4>
+        <p id="answers">Edelgard von Hresvelg</p>
+        <p id="answers">Dimitri Alexandre Blaiddyd</p>
+        <p id="answers">Claude von Riegan</p>
+        <p id="answers">Ferdinand von Aegir</p>
 
-        <h4>What is the air speed velocity of an unladen swallow?</h4>
-            <p>24 miles per hour</p>
-            <p>11 meters per second</p>
-            <p>20.86 knots</p>
-            <p>What do you mean? African or European Swallow?</p>
+        <h4 id="questions">Ike from Fire Emblem: Path of Radiance and Radiant Dawn is known for wielding which sword?
+        </h4>
+        <p id="answers">Alondite</p>
+        <p id="answers">Ettard</p>
+        <p id="answers">Excalibur</p>
+        <p id="answers">Ragnell</p>
+
+        <h4 id="questions">Roy, the protaganist of Fire Emblem: The Binding Blade, is from which country?</h4>
+        <p id="answers">Etruria</p>
+        <p id="answers">Bern</p>
+        <p id="answers">Lycia</p>
+        <p id="answers">Illia</p>
+
+        <h4 id="questions">What is the air speed velocity of an unladen swallow?</h4>
+        <p id="answers">24 miles per hour</p>
+        <p id="answers">11 meters per second</p>
+        <p id="answers">20.86 knots</p>
+        <p id="answers">What do you mean? African or European Swallow?</p>
+    </div>
+
+    <h2>Results!</h2>
+        <p id="correct-text">Correct Answers: </p>
+        <p id="incorrect-text">Inccorect Answers: </p>
+        <p id="unanswered-text">Unanswered: </p>
+
+    <h2>Start Again?</h2>
 
 
-    </div>    
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/javascript/app.js" type="text/javascript"></script>
+
 </body>
+
 </html>
