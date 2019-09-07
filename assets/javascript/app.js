@@ -6,18 +6,34 @@ var right = 0;
 var wrong = 0;
 var noAnswer = 0;
 var time = 5;
+var intervalID;
+
+var questions = ("question-1", "question-2", "question-3");
+var showQuestions;
+var count = 0;
 
 var rightText = $("#correct-text").text("Correct: " + right);
 var wrongText = $("#incorrect-text").text("Inccorect: " + wrong);
 var noAnswerText = $("#unanswered-text").text("Unanswered: " + noAnswer);
 var timeText = $("#timer-text").text("Time Remaining: " + time);
-var intervalID;
 
-function initializeGame(){
-    right = 0;
-    wrong = 0;
-    noAnswer = 0;
+
+// function initializeGame(){
+//     right = 0;
+//     wrong = 0;
+//     noAnswer = 0;
+// }
+
+// $("#start").click(startQuiz);
+
+function showQuestion(){
+
 }
+
+
+// Once the quiz starts, the first question is presented, and the timer starts counting down from 30.
+    
+// timer function 
 
 timer();
 function timer() {
@@ -36,16 +52,6 @@ function decrement() {
 function stop() {
     clearInterval(intervalID);
 }
-
-
-
-
-
-
-
-// Once the quiz starts, the first question is presented, and the timer starts counting down from 30.
-    
-
 
 
 
