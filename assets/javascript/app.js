@@ -17,7 +17,7 @@ $(document).ready(function () {
 
     var questions = [{
         question: "Which MLB team won the 2014 World Series?",
-        choices: ["Kansas City Royals, ", "New York Yankees, ", "San Francisco Giants, ", "Oakland Athletics, "],
+        choices: ["Kansas City Royals ", "New York Yankees ", "San Francisco Giants ", "Oakland Athletics "],
         correctAnswer: 2
     }, {
         question: "Who is the first President of the US?",
@@ -34,17 +34,41 @@ $(document).ready(function () {
 
     
     
-    $.each(questions, function(i,list){
-        
+    $.each(questions, function(i, list){
+        console.log(questions[i].choices);
+        console.log(list);
+        console.log(i);
         var list = $("<p>");    
         
         list.append(questions[i].question, $("<br>"));
 
-        var choiceList = $("<li>");
-        var buttonOne = $("<input type = 'radio' data-choice = '0' />").text(questions[i].choices[0]);
+        var labelOne = $("<label for = 'button1'></label>").text(questions[i].choices[0])
+        var labelTwo = $("<label for = 'button2'></label>").text(questions[i].choices[1])
+        var labelThree = $("<label for = 'button2'></label>").text(questions[i].choices[2])
+        var labelFour = $("<label for = 'button2'></label>").text(questions[i].choices[3])
+
+        var choiceList = $("<p>");
+        var buttonOne = $("<br><input id='button1' type = 'radio' data-choice = '0' />").text(questions[i].choices[0]);
+        
+        var buttonTwo = $("<input type = 'radio' data-choice = '0' />").text(questions[i].choices[1]);
+        var buttonThree = $("<input type = 'radio' data-choice = '0' />").text(questions[i].choices[2]);
+        var buttonFour = $("<input type = 'radio' data-choice = '0' />").text(questions[i].choices[3]);
 
         choiceList.append(buttonOne);
+        choiceList.append(labelOne);
+
+        choiceList.append(buttonTwo);
+        choiceList.append(labelTwo);
+
+        choiceList.append(buttonThree);
+        choiceList.append(labelThree);
+
+        choiceList.append(buttonFour);
+        choiceList.append(labelFour);
+
         list.append(choiceList);
+
+        questionDiv.append(list);
 
         //issue: text does not appear next to radio button after appending or using .text
 
@@ -82,7 +106,7 @@ $(document).ready(function () {
         // list.append(buttonTwo);
         // list.append(buttonThree);
         // list.append(buttonFour);
-        questionDiv.append(list);
+        
 
 
 
