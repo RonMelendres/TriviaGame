@@ -1,45 +1,157 @@
 $(document).ready(function () {
 
-
-    var right = 0;
-    var wrong = 0;
-    var noAnswer = 0;
-    var time = 5;
+    var time = 20;
     
-
     var rightText = $("#correct-text").text("Correct: " + right);
     var wrongText = $("#incorrect-text").text("Inccorect: " + wrong);
     var noAnswerText = $("#unanswered-text").text("Unanswered: " + noAnswer);
-    var timeText = $("#timer-text").text("Time Remaining: 5");
+    var timeText = $("#timer-text").text("Time Remaining: 20");
 
     var intervalId;
     var timeRun = false;
+
+    // score vars:
+    var right = 0;
+    var wrong = 0;
+    var noAnswer = 0;
+
+    var questions = [{
+        question: "Which MLB team won the 2014 World Series?",
+        choices: ["Kansas City Royals, ", "New York Yankees, ", "San Francisco Giants, ", "Oakland Athletics, "],
+        correctAnswer: 2
+    }, {
+        question: "Who is the first President of the US?",
+        choices: ["George Washington", "John Adams", "Thomas Jefferson", "James Madison"],
+        correctAnswer: 0
+    }, {
+        question: " Which battle of the American Civil War was fought from July 1 - July 3, 1863?",
+        choices: ["Antietam", "Fredericksburg", "First Battle of Bull Run", "Gettysburg"],
+        correctAnswer: 3
+    }];
+
+    
+    var questionDiv = $(".quiz-questions");
+
+    
+    
+    $.each(questions, function(i,list){
+        
+        var list = $("<p>");    
+        
+        list.append(questions[i].question, $("<br>"));
+
+        var choiceList = $("<li>");
+        var buttonOne = $("<input type = 'radio' data-choice = '0' />").text(questions[i].choices[0]);
+
+        choiceList.append(buttonOne);
+        list.append(choiceList);
+
+        //issue: text does not appear next to radio button after appending or using .text
+
+
+        
+        //create a new li var
+        // write out the html within the jQuery to deal with inputs
+
+        // var whatever = $("<li>");
+        // var button1 = $("<input type = 'radio' data-choice = '0' />" + questions[i].choices[0]);
+
+        // var buttonOne = $("<input>");
+        // buttonOne.attr("type", "radio");
+        // buttonOne.attr("data-choice", 0);
+        // buttonOne.attr("value", questions[i].choices[0]);
+        // buttonOne.append(questions[i].choices[0], $("<br>"));
+
+        // var buttonTwo = $("<input>");
+        // buttonTwo.attr("type", "radio");
+        // buttonTwo.attr("data-choice", 1);
+        // buttonTwo.append(questions[i].choices[1]);
+
+        // var buttonThree = $("<input>");
+        // buttonThree.attr("type", "radio");
+        // buttonThree.attr("data-choice", 2);
+        // buttonThree.append(questions[i].choices[2]);
+
+        // var buttonFour = $("<input>");
+        // buttonFour.attr("type", "radio");
+        // buttonFour.attr("data-choice", 3);
+        // buttonFour.append(questions[i].choices[3]);
+        
+        
+        // list.append(buttonOne);
+        // list.append(buttonTwo);
+        // list.append(buttonThree);
+        // list.append(buttonFour);
+        questionDiv.append(list);
+
+
+
+
+        //variable -> nQ = $("<p>");
+        //nQ.append(questions[i].question, , questions[i].choices[0], questions[i].choices[1], questions[i].choices[2], questions[i].choices[3]);
+        //questionDiv.append(nQ);
+
+        //variable -> nq = $("<p>");
+        //nq.append(questions[i].question);
+        // you want radio buttons for the choices
+        //variable -> button1 = $("<button>");
+        //button1.attr("style", "radio");
+        //button1.attr("data-choice", 2);
+        //button1.append(questions[i].choices[0]);
+        
+    });
+
+    // var questions = [{
+    //     questions: "",
+    //     choices: [],
+    //     correctAnswer
+    // }]
+    // First. Access the questions array
+    // Second. Access each question and choices in each index
+    // Questions: questions[i].question
+    // Choices: questions[i].choices[0], questions[i].choices[1],...
+
+    
+    
     
     
     // var totalQuestions = $(".questions").size();
     // var questions = $(".questions");
     // var questionCount = 0;
 
-    $questions = $("questions");
-    $questions.hide();
+    // $questions = $("questions");
+    // $questions.hide();
 
     
-
-
     // Intiate the game with an opening start button. Pressing this button will start the quiz
-    // score vars:
+    
+    // Once the quiz starts, the first question is presented, and the timer starts counting down from 30.
+
+        
+    
     $(".pages").hide();
+    $("#game-body").hide();
     $("#start").click(startQuiz)
     
 
     function startQuiz() {
         // $("#start").click(startQuiz);
+
+        $("#game-body").show();
         
         $(".pages").show();
 
+        $(".quiz-questions").show();
+
+        $("#start").hide();
+
+        $("#final-results").hide();
+
         startTime();
+
     }
     
+    // timer functions
 
     function startTime(){
         if (!timeRun) {
@@ -53,7 +165,7 @@ $(document).ready(function () {
         time--;
         
         $("#timer-text").text("Time Remaining: " + time);
-         if (time === 0) {
+        if (time === 0) {
             stop();
         }
     }
@@ -64,45 +176,19 @@ $(document).ready(function () {
     
     }
 
+    // display the 10 questions. each questions has four choices you can only click one option. if you dont finish before the timer, then will go directly to the results page. 
 
-    // window.onload = function () {
-    //     // $("#start").on("click", startTime.start);
-    // };
-    
-    
-    
-    // var startTime = {
-    //     time: 5,
-        
+    function showQuestions () {
 
-    //     start: function () {
-    //         if (!timeRun) {
-    //             timeRun = true;
-    //             intervalId = setInterval(startTime.counter, 1000);
-                
-    //         }
-    //     },
+        for (var i = 0; i < questions.length; i++) {
 
-    //     counter: function() {
-            
-    //         if (timeRun === true){
-                
-    //         startTime.time--;
-    //         console.log(startTime.time);
-    //         timeText = $("#timer-text").html("Time Remaining: " + startTime.time);
-    //         }
-            
-    //     },
-
-    
-        
+        }
+    }
 
 
 
-    //     // function startTime() {
-    //     //     showQuestions = setInterval(nextQuestion, 3000);
 
-    //     //   }
+
 
     //     //   function revealQuestion(){
     //     //     $(".pages").html(questions[count]);
@@ -117,21 +203,8 @@ $(document).ready(function () {
     //     //     setTimeout(revealQuestion, 5000);
     //     // }
 
-    
 
-    //     // decrement: function () {
-    //     //     time--;
-    //     //     $("#timer-text").text("Time Remaining: " + time);
-    //     //     if (time === 0) {
-    //     //         stop();
-    //     //     }
-    //     // },
-
-
-
-        // Once the quiz starts, the first question is presented, and the timer starts counting down from 30.
-
-        // timer function 
+         
 
 
 

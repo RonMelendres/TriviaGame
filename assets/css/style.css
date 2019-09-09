@@ -1,16 +1,38 @@
 body{
+    background-image: url(../images/three-great-heroes.jpg);
+    /* height: 200%; */
+    /* background-position: center; */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
     background-color: darkgray;
     width: 980px;
+}
+
+h1{
+    width: 80%;
+    /* background-color: darkgray; */
+    text-align: center;
+    margin: 100px 327px 0px 327px;
+
+}
+
+#buttons{
+    width: 80%;
+    /* background-color: darkgray; */
+    text-align: center;
+    margin: 90px 327px 0px 327px;  
+    padding-right: -50px;
+    padding-left: -50px;
 
 }
 
 #game-body{
     background-color: lightgray;
-    width: 80%;
+    width: 55%;
     text-align: center;
     padding-top: 10px;
-    padding-right: 0px;
-    padding-left: 0px;
-    padding-bottom: 300px;
-    margin: 50px 327px 10px 327px;
+    padding-right: -50px;
+    padding-left: -50px;
+    padding-bottom: 60px;
+    margin: 0px 440px 10px 440px;
 }

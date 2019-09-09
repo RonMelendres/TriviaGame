@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Trivia Game</title>
-    <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 
 </head>
 
 <body>
 
-    <div id="game-body">
-        <h1>Random Trivia Game</h1>
+    
+        <h1><strong>Random Trivia Game</strong></h1>
 
         <div id="buttons">
             <button id="start">
@@ -26,11 +26,73 @@
         <p id="start-button"></p> -->
 
 
-
+    <div id="game-body">
 
         <div class="pages">
             <h2 id="timer-text">Time Remaining:</h2>
-            <div class="questions">
+            <div class = "quiz-questions">
+                <input type = "radio" value = "1">choice1 <br>
+                <input type = "radio" value = "2">choice2 <br>
+                <input type = "radio" value = "3">choice3 <br>
+                <input type = "radio" value = "4">choice4
+            </div>
+            <!-- <ul class = "choice"></ul> -->
+
+            
+            
+            
+            
+            
+            <div id="final-results">
+                <h2>Results!</h2>
+                <p id="correct-text">Correct Answers: </p>
+                <p id="incorrect-text">Inccorect Answers: </p>
+                <p id="unanswered-text">Unanswered: </p>
+
+                <h3>Answers</h3>
+
+                <p id="right-answer"><strong>1) San Francisco Giants</strong></p>
+                <img src="https://media.giphy.com/media/d2ZlbN14oDMKP0Nq/giphy.gif" alt="SFGiants" width=300/>
+
+                <p id="right-answer"><strong>2) George Washington</strong></p>
+                <img src="https://media.giphy.com/media/Sd8uqMJqpGpP2/giphy.gif" alt="Washington" width=300/>
+
+                <p id="right-answer"><strong>3) Gettysburg</strong></p>
+                <img src="assets/images/gettysburg.jpg" alt="gettysburg" width=300/>
+
+                <p id="right-answer"><strong>4) The Philippines</strong></p>
+                <img src="assets/images/philippines-map.jpg" alt="Philippines" width=300/>
+
+                <p id="right-answer"><strong>5) Hitokiri Batousai</strong></p>
+                <img src="https://media.giphy.com/media/QFZvfknkpIhq/giphy.gif" alt="Kenshin" width=300/>
+
+                <p id="right-answer"><strong>6) Falcon Punch</strong></p>
+                <img src="https://media.giphy.com/media/y4dfjHr6NsjsY/giphy.gif" alt="Captain Falcon" width=300/>
+
+                <p id="right-answer"><strong>7) Dimitri Alexandre Blaiddyd</strong></p>
+                <img src="https://media.giphy.com/media/ZGIZNyhX5QI2hgS7ac/giphy.gif" alt="Dimitri" width=300/>
+
+                <p id="right-answer"><strong>8) Ragnell</strong></p>
+                <img src="https://media.giphy.com/media/zE5w62v1faqXe/giphy.gif" alt="Ike" width=300/>
+
+                <p id="right-answer"><strong>9) Lycia</strong></p>
+                <img src="https://media.giphy.com/media/j58DZS6d7iAEFohRKy/giphy.gif" alt="Roy" width=300/>
+
+                <p id="right-answer"><strong>10) What do you mean? African or European swallow?</strong></p>
+                <img src="https://media.giphy.com/media/10KNNNMdyCoxAA/giphy.gif" alt="Monty Python" width=300/>
+
+
+
+                <h2>Start Again?</h2>
+
+            </div>
+            
+            
+            
+            
+            
+            
+            <!-- <div class="questions">
                 <h4>Which MLB team won the World Series in 2014?</h4>
                 <p id="answer-1">Kansas City Royals</p>
                 <p id="answer-1">New York Yankees</p>
@@ -87,7 +149,7 @@
 
                 <h3 id="time-up-3">Time Up!</h3>
                 <p>The answer is: Gettysburg</p>
-            </div>
+            </div> -->
 
             <!-- <h4 id="questions">At the conclusion of the Spanish-American war, the U.S. PAID Spain $20 million for this
             colony...</h4>
@@ -133,15 +195,7 @@
         <p id="answers">20.86 knots</p>
         <p id="answers">What do you mean? African or European Swallow?</p> -->
 
-            <div id="final-results">
-                <h2>Results!</h2>
-                <p id="correct-text">Correct Answers: </p>
-                <p id="incorrect-text">Inccorect Answers: </p>
-                <p id="unanswered-text">Unanswered: </p>
-
-                <h2>Start Again?</h2>
-
-            </div>
+            
         </div>
 
 
