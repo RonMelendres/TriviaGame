@@ -28,6 +28,15 @@ h1{
 
 }
 
+#restart-button {
+    width: 80%;
+    /* background-color: darkgray; */
+    text-align: center;
+    margin: 60px 65px 0px 65px;  
+    padding-right: -50px;
+    padding-left: -50px;
+}
+
 #start{
     text-align: center;
     font-size: 30px;

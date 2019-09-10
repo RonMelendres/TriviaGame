@@ -1,11 +1,14 @@
 $(document).ready(function () {
 
-    var time = 20;
-    
+    var right = 0;
+    var wrong = 0;
+    var noAnswer = 0;
+    var time = 5;
+
     var rightText = $("#correct-text").text("Correct: " + right);
     var wrongText = $("#incorrect-text").text("Inccorect: " + wrong);
     var noAnswerText = $("#unanswered-text").text("Unanswered: " + noAnswer);
-    var timeText = $("#timer-text").text("Time Remaining: 20");
+    var timeText = $("#timer-text").text("Time Remaining: 5");
 
     var intervalId;
     var timeRun = false;
@@ -27,32 +30,77 @@ $(document).ready(function () {
         question: " Which battle of the American Civil War was fought from July 1 - July 3, 1863?",
         choices: ["Antietam", "Fredericksburg", "First Battle of Bull Run", "Gettysburg"],
         correctAnswer: 3
+    }, {
+        question: "At the conclusion of the Spanish-American war, the U.S. PAID Spain $20 million for this colony...",
+        choices: ["Guam", "The Philippines", "Puerto Rico", "Cuba"],
+        correctAnswer: 1
+    }, {
+        question: "Kenshin Himura from Rurouni Kenshin was also known as...",
+        choices: ["Zero", "Dokukanryu", "Hitokiri Batousai", "Omae Wa Mou Shindeiru"],
+        correctAnswer: 2
+
+    }, {
+        question: "What is the signiture move of Captain Falcon?",
+        choices: ["Falcon Punch", "Falcon Kick", "Falcon Drive", "Falcon Knee"],
+        correctAnswer: 0
+
+    }, {
+        question: "Who is the leader of the Blue Loins house in Fire Emblem: Three Houses?",
+        choices: ["Edelgard von Hresvelg", "Dimitri Alexandre Blaiddyd", "Claude von Riegan", "Ferdinand von Aegir"],
+        correctAnswer: 1
+
+    }, {
+        question: "Ike from Fire Emblem: Path of Radiance and Radiant Dawn is known for wielding which sword?",
+        choices: ["Alondite", "Ettard", "Excalibur", "Ragnell"],
+        correctAnswer: 3
+
+    }, {
+        question: "Roy, the protaganist of Fire Emblem: The Binding Blade, is from which country?",
+        choices: ["Etruria", "Bern", "Lycia", "Illia"],
+        correctAnswer: 2
+
+    }, {
+        question: "What is the air speed velocity of an unladen swallow?",
+        choices: ["24 mph", "11 mps", "20.86 knots", "What do you mean? African or European Swallow?"],
+        correctAnswer: 3
+
     }];
 
-    
     var questionDiv = $(".quiz-questions");
 
-    
-    
-    $.each(questions, function(i, list){
+    $.each(questions, function (i, list) {
+        console.log(questions)
         console.log(questions[i].choices);
         console.log(list);
         console.log(i);
-        var list = $("<p>");    
-        
+
+        var list = $("<p>");
+
+        // to deal with the spacing issue, make a new div tag and put multiple p tags 
+
         list.append(questions[i].question, $("<br>"));
 
-        var labelOne = $("<label for = 'button1'></label>").text(questions[i].choices[0])
-        var labelTwo = $("<label for = 'button2'></label>").text(questions[i].choices[1])
-        var labelThree = $("<label for = 'button2'></label>").text(questions[i].choices[2])
-        var labelFour = $("<label for = 'button2'></label>").text(questions[i].choices[3])
+        var labelOne = $(`<label for ='button-${i}-${questions[i].choices[0]}'></label>`).text(questions[i].choices[0])
+        var labelTwo = $(`<label for = 'button-${i}-${questions[i].choices[0]}'></label>`).text(questions[i].choices[1])
+        var labelThree = $(`<label for = 'button-${i}-${questions[i].choices[0]}'></label>`).text(questions[i].choices[2])
+        var labelFour = $(`<label for = 'button-${i}-${questions[i].choices[0]}'></label>`).text(questions[i].choices[3])
 
         var choiceList = $("<p>");
-        var buttonOne = $("<br><input id='button1' type = 'radio' data-choice = '0' />").text(questions[i].choices[0]);
-        
-        var buttonTwo = $("<input type = 'radio' data-choice = '0' />").text(questions[i].choices[1]);
-        var buttonThree = $("<input type = 'radio' data-choice = '0' />").text(questions[i].choices[2]);
-        var buttonFour = $("<input type = 'radio' data-choice = '0' />").text(questions[i].choices[3]);
+
+        var buttonOne = $(`<br><input id='button-${i}-${questions[i].choices[0]}' value=${questions[i].choices[0]} type='radio' name=${i} />`).text(questions[i].choices[0]);
+        var buttonTwo = $(`<input id='button-${i}-${questions[i].choices[1]}' value=${questions[i].choices[1]} type='radio' name=${i} />`).text(questions[i].choices[1]);
+        var buttonThree = $(`<input id='button-${i}-${questions[i].choices[2]}' value=${questions[i].choices[2]} type='radio' name=${i} />`).text(questions[i].choices[2]);
+        var buttonFour = $(`<input id='button-${i}-${questions[i].choices[3]}' value=${questions[i].choices[3]} type='radio' name=${i} />`).text(questions[i].choices[3]);
+
+        // "button-0"
+        // "button-" + "0" === "button-0" 
+        // // i === 0 on first pass through
+        // "button-" + i === "button-0"
+        // // i === 1 on second pass through
+        // "button-" + i === "button-1"
+        // // STRING INTERPOLATION ``
+        // `button-${i}`
+        // this makes the code cleaner instead of manually putting in button [number]
 
         choiceList.append(buttonOne);
         choiceList.append(labelOne);
@@ -70,99 +118,32 @@ $(document).ready(function () {
 
         questionDiv.append(list);
 
-        //issue: text does not appear next to radio button after appending or using .text
-
-
-        
-        //create a new li var
-        // write out the html within the jQuery to deal with inputs
-
-        // var whatever = $("<li>");
-        // var button1 = $("<input type = 'radio' data-choice = '0' />" + questions[i].choices[0]);
-
-        // var buttonOne = $("<input>");
-        // buttonOne.attr("type", "radio");
-        // buttonOne.attr("data-choice", 0);
-        // buttonOne.attr("value", questions[i].choices[0]);
-        // buttonOne.append(questions[i].choices[0], $("<br>"));
-
-        // var buttonTwo = $("<input>");
-        // buttonTwo.attr("type", "radio");
-        // buttonTwo.attr("data-choice", 1);
-        // buttonTwo.append(questions[i].choices[1]);
-
-        // var buttonThree = $("<input>");
-        // buttonThree.attr("type", "radio");
-        // buttonThree.attr("data-choice", 2);
-        // buttonThree.append(questions[i].choices[2]);
-
-        // var buttonFour = $("<input>");
-        // buttonFour.attr("type", "radio");
-        // buttonFour.attr("data-choice", 3);
-        // buttonFour.append(questions[i].choices[3]);
-        
-        
-        // list.append(buttonOne);
-        // list.append(buttonTwo);
-        // list.append(buttonThree);
-        // list.append(buttonFour);
-        
-
-
-
-
-        //variable -> nQ = $("<p>");
-        //nQ.append(questions[i].question, , questions[i].choices[0], questions[i].choices[1], questions[i].choices[2], questions[i].choices[3]);
-        //questionDiv.append(nQ);
-
-        //variable -> nq = $("<p>");
-        //nq.append(questions[i].question);
-        // you want radio buttons for the choices
-        //variable -> button1 = $("<button>");
-        //button1.attr("style", "radio");
-        //button1.attr("data-choice", 2);
-        //button1.append(questions[i].choices[0]);
-        
     });
 
-    // var questions = [{
-    //     questions: "",
-    //     choices: [],
-    //     correctAnswer
-    // }]
-    // First. Access the questions array
-    // Second. Access each question and choices in each index
-    // Questions: questions[i].question
-    // Choices: questions[i].choices[0], questions[i].choices[1],...
+    //  function below is supposed to connect/record the answers to the results section
 
-    
-    
-    
-    
-    // var totalQuestions = $(".questions").size();
-    // var questions = $(".questions");
-    // var questionCount = 0;
+    // function recordAnswers(){
+    //     
 
-    // $questions = $("questions");
-    // $questions.hide();
 
-    
-    // Intiate the game with an opening start button. Pressing this button will start the quiz
-    
-    // Once the quiz starts, the first question is presented, and the timer starts counting down from 30.
+    // on click, assigned userguess atribute value of any of the buttons. userguess equals value of correct answer = correct ++
 
-        
-    
+
+    //     var userGuess = on.c
+    //     if ( )
+    // }
+
+
     $(".pages").hide();
     $("#game-body").hide();
     $("#start").click(startQuiz)
-    
+    $("#restart").click(restartQuiz)
 
     function startQuiz() {
         // $("#start").click(startQuiz);
 
         $("#game-body").show();
-        
+
         $(".pages").show();
 
         $(".quiz-questions").show();
@@ -174,10 +155,25 @@ $(document).ready(function () {
         startTime();
 
     }
-    
+
+    function restartQuiz() {
+        $("#game-body").show();
+
+        $(".pages").show();
+
+        $(".quiz-questions").show();
+
+        $("#start").hide();
+
+        $("#final-results").hide();
+
+        startTime();
+        time = 5;
+    }
+
     // timer functions
 
-    function startTime(){
+    function startTime() {
         if (!timeRun) {
             timeRun = true;
             intervalID = setInterval(decrement, 1000);
@@ -185,60 +181,32 @@ $(document).ready(function () {
     }
 
     function decrement() {
-        
+
         time--;
-        
+
         $("#timer-text").text("Time Remaining: " + time);
         if (time === 0) {
             stop();
+            $(".quiz-questions").hide();
+            $("#final-results").show();
         }
     }
 
     function stop() {
         timeRun = false;
         clearInterval(intervalID);
-    
     }
+
 
     // display the 10 questions. each questions has four choices you can only click one option. if you dont finish before the timer, then will go directly to the results page. 
 
-    function showQuestions () {
-
-        for (var i = 0; i < questions.length; i++) {
-
-        }
-    }
 
 
 
 
-
-
-    //     //   function revealQuestion(){
-    //     //     $(".pages").html(questions[count]);
-    //     // }
-
-    //     // function nextQuestion () {
-    //     //     count++;
-    //     //     $(".pages").html(questions);
-    //     //     if (count === questions.length) {
-    //     //         count = 0;
-    //     //     }
-    //     //     setTimeout(revealQuestion, 5000);
-    //     // }
-
-
-         
-
-
-
-
-
-
-
-        // If the correct answer is guessed, timer stops, displays a "correct" message with the answer, and automatically moves to the next question after a few seconds
-        // If the incorrect answer is guessed or if the timer reachers zero, timer stops, displays "incorrect" message with the answer, and automatically moves to the next question after a few seconds
-        // This repeats until you finish the quiz.
+    // If the correct answer is guessed, timer stops, displays a "correct" message with the answer, and automatically moves to the next question after a few seconds
+    // If the incorrect answer is guessed or if the timer reachers zero, timer stops, displays "incorrect" message with the answer, and automatically moves to the next question after a few seconds
+    // This repeats until you finish the quiz.
 
 
 
@@ -247,8 +215,8 @@ $(document).ready(function () {
 
 
 
-        // After the last question, regardless if answered right or wrong, the timer stops, results screen will pop up, and button to restart the quiz will pop up.
+    // After the last question, regardless if answered right or wrong, the timer stops, results screen will pop up, and button to restart the quiz will pop up.
 
 
 
-    })
+})
