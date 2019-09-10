@@ -3,17 +3,17 @@ $(document).ready(function () {
     var right = 0;
     var wrong = 0;
     var noAnswer = 0;
-    var time = 5;
+    var time = 60;
 
     var rightText = $("#correct-text").text("Correct: " + right);
     var wrongText = $("#incorrect-text").text("Inccorect: " + wrong);
     var noAnswerText = $("#unanswered-text").text("Unanswered: " + noAnswer);
-    var timeText = $("#timer-text").text("Time Remaining: 5");
+    var timeText = $("#timer-text").text("Time Remaining: 60");
 
     var intervalId;
     var timeRun = false;
 
-    // score vars:
+    
     var right = 0;
     var wrong = 0;
     var noAnswer = 0;
@@ -69,10 +69,10 @@ $(document).ready(function () {
     var questionDiv = $(".quiz-questions");
 
     $.each(questions, function (i, list) {
-        console.log(questions)
-        console.log(questions[i].choices);
-        console.log(list);
-        console.log(i);
+        // console.log(questions)
+        // console.log(questions[i].choices);
+        // console.log(list);
+        // console.log(i);
 
         var list = $("<p>");
 
@@ -120,19 +120,9 @@ $(document).ready(function () {
 
     });
 
-    //  function below is supposed to connect/record the answers to the results section
-
-    // function recordAnswers(){
-    //     
-
-
-    // on click, assigned userguess atribute value of any of the buttons. userguess equals value of correct answer = correct ++
-
-
-    //     var userGuess = on.c
-    //     if ( )
-    // }
-
+    // display the 10 questions. each questions has four choices you can only click one option. if you dont finish before the timer, then will go directly to the results page. If user wants to restart the quiz, they will need to click the "start again" button at the bottom of the page.
+    
+    // Answers will show below the number results with some fun gifs. 
 
     $(".pages").hide();
     $("#game-body").hide();
@@ -168,7 +158,7 @@ $(document).ready(function () {
         $("#final-results").hide();
 
         startTime();
-        time = 5;
+        time = 60;
     }
 
     // timer functions
@@ -197,26 +187,21 @@ $(document).ready(function () {
         clearInterval(intervalID);
     }
 
+    // Notes: This quiz is not fully complete: 1) The questions and choices section still need to be stylized a bit.
+    // 2) If the user finishes early, the page is supposed to go directly to the results page.
+    // 3) Most importantly, the recording of answers is not complete.
 
-    // display the 10 questions. each questions has four choices you can only click one option. if you dont finish before the timer, then will go directly to the results page. 
+//  Space below is supposed have a function(s) to connect/record the answers to the results section
 
+//  Make it so that "userGuess" is a function or part of a function and attach it to a click event.
+// If the user is able to guess on all questions before the end of the timer, this will go to the results page.
+    //This should be triggered by a function/conditional stating that if all questions are guess before the timer reaches zero, then
+    // $("#final-results").show() and $(".quiz-questions").hide() will activate.
 
-
-
-
-    // If the correct answer is guessed, timer stops, displays a "correct" message with the answer, and automatically moves to the next question after a few seconds
-    // If the incorrect answer is guessed or if the timer reachers zero, timer stops, displays "incorrect" message with the answer, and automatically moves to the next question after a few seconds
-    // This repeats until you finish the quiz.
-
-
-
-
-
-
-
-
-    // After the last question, regardless if answered right or wrong, the timer stops, results screen will pop up, and button to restart the quiz will pop up.
-
+// The click event will eventually be recorded through conditionals.
+// Basically, if userGuess equals the correct index value of the choices sub category, then correct++
+//  If userGuess does not equal the correct index value, then incorrect++
+// If userguess does not choose an option, then unanswered++
 
 
 })
